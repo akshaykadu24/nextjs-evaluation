@@ -22,8 +22,8 @@ const Projects = ({repo}) => {
               {
                 repo.items.map((el)=>{
                   return (
-                  <Link href={el.html_url}>
-                  <Box key={el.name} paddingRight={10} bg={"lightgrey"} padding={5}>
+                  <Link key={el.name} href={el.html_url}>
+                  <Box  paddingRight={10} bg={"lightgrey"} padding={5}>
                     <Heading size="md">{el.name}</Heading>
                     <Flex justifyContent="space-between" >
                     <Box>forks: {el.forks_count}</Box>

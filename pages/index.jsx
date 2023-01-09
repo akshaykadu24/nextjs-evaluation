@@ -57,8 +57,8 @@ export default function Home({data}) {
               {
                 repo.items.map((el)=>{
                   return (
-                    <Link href={el.html_url}>
-                      <Box key={el.name} width={500} bg={"lightgrey"} padding={5}>
+                    <Link key={el.name} href={el.html_url}>
+                      <Box  width={500} bg={"lightgrey"} padding={5}>
                     <Heading size="md">{el.name}</Heading>
                     <Box>
                     <Box>forks: {el.forks_count}</Box>
