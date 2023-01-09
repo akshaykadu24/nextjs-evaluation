@@ -20,20 +20,20 @@ export default function Home({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Flex className={styles.description}>
+        <SimpleGrid columns={[1,1,2,2]} >
           
-          <Box>
+          <Box >
             <Image style={{borderRadius:"50%"}}  src={prof.avatar_url} width={150} height={150} alt={prof.name} />
             <Heading>{prof.name}</Heading>
             <Heading size="md">@{prof.login}</Heading><br/>
             <>{prof.bio}</><br/><br/>
-            <Flex>
-              <Link href={""}><Button bg={"skyblue"}>Resume</Button></Link>
+            <Flex gap={2}>
+              <Link href={""}><Button bg={"skyblue"}>Resume</Button> </Link> 
               <Link href={"https://github.com/riteshf"}><Button bg={"skyblue"}>Follow</Button></Link>
               
             </Flex>
             <Box><br/>
-            <SimpleGrid columns={4} >
+            <SimpleGrid columns={[3,4]} >
               {
                 prof.bio.split('|').map((el)=>{
                   return(<Box key={el}> <Button size={"sm"}>{el}</Button>  </Box>)
@@ -51,25 +51,28 @@ export default function Home({data}) {
             </Box>
             
           </Box>
-          <Box ml={10}>
+          <Box >
             <Heading>Projects</Heading>
             <SimpleGrid columns={4} spacing={10} >
               {
                 repo.items.map((el)=>{
-                  return (<Box key={el.name} width={500} bg={"lightgrey"} padding={5}>
+                  return (
+                    <Link href={el.html_url}>
+                      <Box key={el.name} width={500} bg={"lightgrey"} padding={5}>
                     <Heading size="md">{el.name}</Heading>
-                    <>
-                    <>forks: {el.forks_count}</>
+                    <Box>
+                    <Box>forks: {el.forks_count}</Box>
                     <Heading size="sm"> language: {el.language}</Heading>
-                    </>
-                      <>following: {el.stargazers_count}</>
+                    </Box>
+                      < Box>following: {el.stargazers_count}</Box>
                    
-                  </Box>)
+                  </Box>
+                  </Link>)
                 })
               }
             </SimpleGrid>
           </Box>
-        </Flex>
+        </SimpleGrid>
       </main>
     </>
   )

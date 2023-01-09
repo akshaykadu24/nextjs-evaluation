@@ -2,6 +2,7 @@ import axios from "axios"
 import { Box, Flex, Heading, SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
 import Head from "next/head"
+import Link from "next/link"
 
 const Projects = ({repo}) => {
     // console.log(repo)
@@ -17,10 +18,12 @@ const Projects = ({repo}) => {
     <Box ml={10}>
         <Heading>Projects</Heading>
         <Box>
-        <SimpleGrid columns={4} spacing={10} >
+        <SimpleGrid columns={[2,3,4]} spacing={10} >
               {
                 repo.items.map((el)=>{
-                  return (<Box key={el.name} paddingRight={10} bg={"lightgrey"} padding={5}>
+                  return (
+                  <Link href={el.html_url}>
+                  <Box key={el.name} paddingRight={10} bg={"lightgrey"} padding={5}>
                     <Heading size="md">{el.name}</Heading>
                     <Flex justifyContent="space-between" >
                     <Box>forks: {el.forks_count}</Box>
@@ -28,7 +31,8 @@ const Projects = ({repo}) => {
                     </Flex>
                     <Heading size="sm"> language: {el.language}</Heading>
                    
-                  </Box>)
+                  </Box>
+                  </Link>)
                 })
               }
             </SimpleGrid>
